@@ -13,10 +13,16 @@ const Main = styled('main')({
   gap: '12px',
   transition: 'width 300ms ease',
   // backgroundColor: '#000',
+  ['@media (max-width: 950px)']: {
+    flexDirection: 'row',
+    width: '100%',
+  },
+
   ['@media (max-width: 780px)']: {
     flexDirection: 'column',
     width: '100%',
-  }
+    gap: '40px'
+  },
 })
 const useStyles = makeStyles({
   container: {
@@ -24,7 +30,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     padding: '10px 4px',
-    backgroundColor: '#abc',
+    // backgroundColor: '#abc',
     transition: 'width 300ms ease',
     ['@media (max-width: 780px)']: {
       width: '95%',

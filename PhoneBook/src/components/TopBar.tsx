@@ -17,10 +17,12 @@ const NameTitle = styled('h3')({
     padding: '0px 50px',
     fontWeight: 'bolder',
     fontSize: '28px',
+    // fontFamily: 'Cambria',
+    fontStyle: 'italic',
     transition: 'font-size 300ms ease , padding 300ms ease',
     ['@media (max-width: 640px)']: {
-        padding: '0px 4px',
-        fontSize: '24px',
+        padding: '0px 8px',
+        fontSize: '26px',
     }
 })
 export const TopBar = () => {

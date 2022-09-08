@@ -1,28 +1,41 @@
 import React from 'react';
-import { Button, Input, makeStyles, styled } from '@material-ui/core';
+import { Button, DialogTitle, FormLabel, Input, makeStyles, styled, TextareaAutosize, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles({
     form: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        // alignItems: 'center',
+        justifyContent: 'flex-start',
         width: '100%',
         padding: '0px 10px',
-        gap: '1.5rem',
+        gap: '1.6rem',
     },
     input_field: {
         display: 'flex',
         flexDirection: 'column',
-        width: '100%'
+        width: '100%',
+        gap: '10px'
     },
     input: {
         width: '80%',
+        padding: '8px 8px',
+        border: '1px solid #d1d5db',
+        borderRadius: '4px',
+        transition: 'border 300ms ease',
+        '&:hover': {
+            border: '1px solid steelblue',
+        },
+        '&:focus': {
+            border: '1px solid steelblue',
+        }
     },
+    submit_btn: {
+        marginTop: '10px'
+    }
 })
 
 const Header = styled('h3')({
-    fontSize: '20px',
+    // fontSize: '20px',
     width: '100%',
     textAlign: 'start',
 })
@@ -31,22 +44,23 @@ export const PhoneDetailsForm = (): JSX.Element => {
     const classes = useStyles();
     return (
         <form className={classes.form}>
-            <Header>Add User Details</Header>
+            <DialogTitle style={{textAlign: 'start'}}>Add User Details</DialogTitle>
             <div className={classes.input_field}>
-                <label htmlFor="fname">First Name:</label>
-                <Input type='text' id='fname' className={classes.input} placeholder='Omic' />
+                <FormLabel htmlFor='fname'>First Name:</FormLabel>
+                <Input type='text' id='fname' className={classes.input} disableUnderline placeholder='Omic' />
             </div>
             <div className={classes.input_field}>
-                <label htmlFor="lname">Last Name:</label>
-                <Input type='text' id='lname' className={classes.input} placeholder='Rocks' />
+                <FormLabel htmlFor='lname'>Last Name:</FormLabel>
+                <Input type='text' id='lname' className={classes.input} disableUnderline placeholder='Rocks' />
             </div>
             <div className={classes.input_field}>
-                <label htmlFor="phone">Phone:</label>
-                <Input type='text' id='phone' className={classes.input} placeholder='5558675309' />
+                <FormLabel htmlFor='phone'>Phone:</FormLabel>
+                <Input type='text' id='phone' className={classes.input} disableUnderline placeholder='5558675309' />
             </div>
-            <div className="submit-btn">
+            <div className={classes.submit_btn}>
                 <Button color="primary" variant="contained" size='medium' type='submit'>Add User</Button>
             </div>
         </form>
     )
 }
+// @material-ui/core
