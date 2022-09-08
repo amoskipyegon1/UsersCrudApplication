@@ -1,28 +1,35 @@
-import { Box, makeStyles } from '@material-ui/core'
+import { makeStyles, styled } from '@material-ui/core'
 import React from 'react'
 
 const useStyles = makeStyles({
     header: {
-        minHeight: '4rem',
+        minHeight: '5rem',
         width: '100%',
-        backgroundColor: 'papayawhip',
-        // padding: '0px 18px',
+        backgroundColor: '#e5e7eb',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        boxShadow: 'rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px',
+        
     },
-    header_footer: {
-        padding: '10px 0px',
-        borderTop: '1px solid gray'
+})
+const NameTitle = styled('h3')({
+    color: '#447489',
+    padding: '0px 50px',
+    fontWeight: 'bolder',
+    fontSize: '28px',
+    transition: 'font-size 300ms ease , padding 300ms ease',
+    ['@media (max-width: 640px)']: {
+        padding: '0px 4px',
+        fontSize: '24px',
     }
 })
 export const TopBar = () => {
     const classes = useStyles();
   return (
     <header className={classes.header}>
-        <h2>Save Users - React js</h2>
-        <Box className={classes.header_footer}>
-            <small>Sep 8, 2022</small>
-        </Box>
+
+        <NameTitle>Save Users - React js</NameTitle>
+
     </header>
   )
 }
