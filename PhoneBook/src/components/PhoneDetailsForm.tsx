@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, DialogTitle, FormLabel, Input, makeStyles, styled, TextareaAutosize, TextField } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Button, DialogTitle, FormLabel, Input, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
     form: {
@@ -72,22 +72,47 @@ const useStyles = makeStyles({
     }
 })
 
+interface UserDetail {
+    firstName?: string;
+    lastName?: string;
+    phone?: string;
+}
+
 export const PhoneDetailsForm = (): JSX.Element => {
     const classes = useStyles();
+
+    const [userDetails, setUserDetails] = useState<UserDetail>({
+        firstName: 'Omic', lastName: 'Rocks', phone: '555867509'
+    })
+    // Input Data
+    const [firstName, setFirstName] = useState<String | null>('Omic');
+
+    const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFirstName(e.target.value.trim());
+        console.log(firstName);
+        
+    }
+
+    // User Submit Form
+    const postUser = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        console.log("Submitted");
+        
+    }
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={postUser}>
             <DialogTitle style={{textAlign: 'start', padding: '0px'}}>Add User</DialogTitle>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='fname' style={{textAlign: 'start', width: '100%'}}>First Name:</FormLabel>
-                <Input type='text' id='fname' className={classes.input} disableUnderline placeholder='Omic' />
+                <Input type='text' id='fname' className={classes.input} disableUnderline placeholder='Omic' defaultValue={userDetails.firstName} onChange={handleFirstNameChange} />
             </div>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='lname' style={{textAlign: 'start', width: '100%'}}>Last Name:</FormLabel>
-                <Input type='text' id='lname' className={classes.input} disableUnderline placeholder='Rocks' />
+                <Input type='text' id='lname' className={classes.input} disableUnderline placeholder='Rocks' defaultValue={userDetails.lastName} />
             </div>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='phone' style={{textAlign: 'start', width: '100%'}}>Phone:</FormLabel>
-                <Input type='text' id='phone' className={classes.input} disableUnderline placeholder='5558675309' />
+                <Input type='text' id='phone' className={classes.input} disableUnderline placeholder='5558675309' defaultValue={userDetails.phone} />
             </div>
             <div className={classes.submit_btn}>
                 <Button color="primary" variant="contained" size='medium' type='submit'>Add User</Button>

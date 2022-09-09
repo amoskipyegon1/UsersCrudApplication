@@ -1,4 +1,4 @@
-import { styled, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { DialogTitle, styled, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 import React from 'react'
 
 
@@ -6,7 +6,7 @@ const Section = styled('section')({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  padding: '80px 10px',
+  padding: '8px 10px',
   gap: '1.6rem',
   transition: 'padding 300ms ease',
 
@@ -54,8 +54,11 @@ const TableDataRow = styled(TableRow)({
   },
 })
 export const ContactTable = () => {
+
+  
   return (
     <Section>
+      <DialogTitle style={{textAlign: 'start', padding: '0px'}}>Saved Users</DialogTitle>
       <ContactsTable>
         <TableHead>
           <TableRow>
