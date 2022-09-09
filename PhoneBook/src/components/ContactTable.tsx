@@ -1,4 +1,4 @@
-import { styled, Table, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { styled, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
 import React from 'react'
 
 
@@ -6,19 +6,57 @@ const Section = styled('section')({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  padding: '0px 10px',
+  padding: '80px 10px',
   gap: '1.6rem',
+  transition: 'padding 300ms ease',
+
+  ['@media (max-width: 780px)']: {
+    padding: '0px 10px',
+  },
 })
 const StyleTH = styled(TableCell)({
-  backgroundColor: 'steelblue',
-  color: 'papayawhip',
+  backgroundColor: '#e5e7eb',
+  color: 'steelblue',
   borderRight: '1px solid #fff',
   fontSize: '16px',
+  fontWeight: 'bold',
+  padding: '14px 4px 2px 8px',
+  transition: 'fonts 300ms ease',
+  ['&:last-child']: {
+    borderRight: '0px',
+    borderTopRightRadius: '4px',
+  },
+
+  ['@media (max-width: 950px)']: {
+    fontSize: '14px',
+  },
+
+  ['@media (max-width: 780px)']: {
+    fontSize: '14px',
+  },
+
+})
+const ContactsTable = styled(Table)({
+  border: '1px solid #d1d5db',
+})
+const TableData = styled(TableCell)({
+  borderRight: '1px solid #e5e7eb',
+  padding: '12px 4px',
+  color: '#475569',
+
+  ['&:last-child']: {
+    borderRight: '0px',
+  }
+})
+const TableDataRow = styled(TableRow)({
+  ['&:nth-of-type(odd)']: {
+    backgroundColor: '#f9fafb',
+  },
 })
 export const ContactTable = () => {
   return (
     <Section>
-      <Table>
+      <ContactsTable>
         <TableHead>
           <TableRow>
             <StyleTH align='left'>First Name</StyleTH>
@@ -26,7 +64,24 @@ export const ContactTable = () => {
             <StyleTH align='left'>Phone</StyleTH>
           </TableRow>
         </TableHead>
-      </Table>
+        <TableBody>
+          <TableDataRow>
+            <TableData>Amos</TableData>
+            <TableData>Kipyegon</TableData>
+            <TableData>0794818111</TableData>
+          </TableDataRow>
+          <TableDataRow>
+            <TableData>Amos</TableData>
+            <TableData>Kipyegon</TableData>
+            <TableData>0794818111</TableData>
+          </TableDataRow>
+          <TableDataRow>
+            <TableData>Amos</TableData>
+            <TableData>Kipyegon</TableData>
+            <TableData>0794818111</TableData>
+          </TableDataRow>
+        </TableBody>
+      </ContactsTable>
     </Section>
   )
 }

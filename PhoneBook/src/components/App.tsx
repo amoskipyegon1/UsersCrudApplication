@@ -26,7 +26,7 @@ const Main = styled('main')({
 })
 const useStyles = makeStyles({
   container: {
-    width: '500px',
+    width: '550px',
     display: 'flex',
     justifyContent: 'center',
     padding: '10px 4px',
