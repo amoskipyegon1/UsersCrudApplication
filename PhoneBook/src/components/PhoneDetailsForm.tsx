@@ -86,17 +86,26 @@ export const PhoneDetailsForm = (): JSX.Element => {
     })
     // Input Data
     const [firstName, setFirstName] = useState<String | null>('Omic');
+    const [lastName, setLastName] = useState<String | null>('Rocks');
+    const [phone, setPhone] = useState<String | null>('555867509');
 
     const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFirstName(e.target.value.trim());
-        console.log(firstName);
-        
+        console.log(firstName);   
+    }
+    const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLastName(e.target.value.trim());
+        console.log(firstName);   
+    }
+    const handlePhoneChange = (e: React.KeyboardEventHandler<HTMLInputElement>) => {
+        setPhone(e.currentTarget.value.trim());
+        console.log(firstName);   
     }
 
     // User Submit Form
     const postUser = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        console.log("Submitted");
+        console.log(firstName, lastName, phone);
         
     }
     return (
@@ -108,11 +117,11 @@ export const PhoneDetailsForm = (): JSX.Element => {
             </div>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='lname' style={{textAlign: 'start', width: '100%'}}>Last Name:</FormLabel>
-                <Input type='text' id='lname' className={classes.input} disableUnderline placeholder='Rocks' defaultValue={userDetails.lastName} />
+                <Input type='text' id='lname' className={classes.input} disableUnderline placeholder='Rocks' defaultValue={lastName} />
             </div>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='phone' style={{textAlign: 'start', width: '100%'}}>Phone:</FormLabel>
-                <Input type='text' id='phone' className={classes.input} disableUnderline placeholder='5558675309' defaultValue={userDetails.phone} />
+                <Input type='text' id='phone' className={classes.input} disableUnderline placeholder='5558675309' defaultValue={phone} onKeyDown={handlePhoneChange} />
             </div>
             <div className={classes.submit_btn}>
                 <Button color="primary" variant="contained" size='medium' type='submit'>Add User</Button>
