@@ -12,17 +12,22 @@ const useStyles = makeStyles({
         gap: '1.6rem',
         transition: 'width 300ms ease',
 
+
+
         ['@media (max-width: 780px)']: {
             justifyContent: 'center',
             alignItems: 'center',
             width: '90%',
+            // padding: '2px 2px'
         },
 
-        ['@media (max-width: 950px)']: {
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '80%',
+        ['@media (max-width: 1050px)']: {
+            justifyContent: 'start',
+            alignItems: 'start',
+            width: '100%',
+            
         },
+
     
     },
     input_field: {
@@ -37,13 +42,13 @@ const useStyles = makeStyles({
         ['@media (max-width: 950px)']: {
             justifyContent: 'center',
             alignItems: 'center',
-            width: '100%',
+            width: '90%',
         },
     
         ['@media (max-width: 780px)']: {
             justifyContent: 'center',
             alignItems: 'center',
-            width: '100%',
+            width: '90%',
         },
     },
     input: {

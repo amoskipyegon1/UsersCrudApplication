@@ -9,7 +9,7 @@ const Main = styled('main')({
   flexDirection: 'row',
   justifyContent: 'space-between',
   width: '80%',
-  padding: '0px 8px',
+  padding: '0px 4px',
   gap: '12px',
   transition: 'width 300ms ease',
   // backgroundColor: '#000',
