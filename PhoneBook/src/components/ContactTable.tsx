@@ -38,6 +38,7 @@ const StyleTH = styled(TableCell)({
 })
 const ContactsTable = styled(Table)({
   border: '1px solid #d1d5db',
+  minHeight: ''
 })
 const TableData = styled(TableCell)({
   borderRight: '1px solid #e5e7eb',
@@ -53,8 +54,23 @@ const TableDataRow = styled(TableRow)({
     backgroundColor: '#f9fafb',
   },
 })
-export const ContactTable = () => {
 
+interface UserDetail {
+  firstName: string | null;
+  lastName: string | null;
+  phone: string | null;
+}
+
+
+export const ContactTable = (props: {userDetailList: UserDetail[]}) => {
+
+  const listSavedUsers = props.userDetailList.map((user) => 
+    <TableDataRow>
+      <TableData>{user.firstName}</TableData>
+      <TableData>{user.lastName}</TableData>
+      <TableData>{user.phone}</TableData>
+    </TableDataRow>
+  );
   
   return (
     <Section>
@@ -68,21 +84,7 @@ export const ContactTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableDataRow>
-            <TableData>Amos</TableData>
-            <TableData>Kipyegon</TableData>
-            <TableData>0794818111</TableData>
-          </TableDataRow>
-          <TableDataRow>
-            <TableData>Amos</TableData>
-            <TableData>Kipyegon</TableData>
-            <TableData>0794818111</TableData>
-          </TableDataRow>
-          <TableDataRow>
-            <TableData>Amos</TableData>
-            <TableData>Kipyegon</TableData>
-            <TableData>0794818111</TableData>
-          </TableDataRow>
+          {listSavedUsers}
         </TableBody>
       </ContactsTable>
     </Section>

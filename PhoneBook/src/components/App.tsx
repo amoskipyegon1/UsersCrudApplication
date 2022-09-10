@@ -31,7 +31,6 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     padding: '10px 4px',
-    // backgroundColor: '#abc',
     transition: 'width 300ms ease',
     ['@media (max-width: 780px)']: {
       width: '95%',
@@ -56,12 +55,16 @@ function App() {
   // const [phone, setPhone] = useState<String | null>('555867509');
   const [userDetail, setUserDetail] = useState<UserDetail>();
 
+  const [userDetailList, setUserDetailList] = useState<UserDetail[]>([]);
+
   const postUser = (user: UserDetail): void => {
     setUserDetail(user);
   }
 
   useEffect(() => {
     console.log(userDetail);
+    let newUser = userDetail;
+    setUserDetailList((users) => users.concat({firstName: userDetail?.firstName, lastName: 'rocks', phone: '55'}));
     
   }, [userDetail]);
 
@@ -75,7 +78,7 @@ function App() {
       </div>
 
       <div className={classes.container}>
-        <ContactTable />
+        <ContactTable userDetailList={userDetailList} />
       </div>
 
     </Main>
