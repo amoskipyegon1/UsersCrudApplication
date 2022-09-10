@@ -48,12 +48,10 @@ interface UserDetail {
 function App() {
   
   const classes = useStyles();
-
-  // Input Data
-  // const [firstName, setFirstName] = useState<string | null>('Omic');
-  // const [lastName, setLastName] = useState<String | null>('Rocks');
-  // const [phone, setPhone] = useState<String | null>('555867509');
-  const [userDetail, setUserDetail] = useState<UserDetail>();
+  
+  const [userDetail, setUserDetail] = useState<UserDetail>({
+    firstName: '', lastName: '', phone: ''
+  });
 
   const [userDetailList, setUserDetailList] = useState<UserDetail[]>([]);
 
@@ -62,11 +60,18 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(userDetail);
-    let newUser = userDetail;
-    setUserDetailList((users) => users.concat({firstName: userDetail?.firstName, lastName: 'rocks', phone: '55'}));
+    if(userDetail.firstName !== ''){
+      setUserDetailList((users) => users.concat(userDetail));
+    } else {
+      return;
+    }
     
   }, [userDetail]);
+
+  useEffect(() => {
+    console.log(userDetailList);
+    
+  }, [userDetailList])
 
   return (
     <Main>
