@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, DialogTitle, FormLabel, Input, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -73,21 +73,19 @@ const useStyles = makeStyles({
 })
 
 interface UserDetail {
-    firstName?: string;
-    lastName?: string;
-    phone?: string;
+    firstName: string | null;
+    lastName: string | null;
+    phone: string | null;
 }
 
-export const PhoneDetailsForm = (): JSX.Element => {
+export const PhoneDetailsForm = (props: { postUser(user: UserDetail): void }): JSX.Element => {
     const classes = useStyles();
 
-    const [userDetails, setUserDetails] = useState<UserDetail>({
-        firstName: 'Omic', lastName: 'Rocks', phone: '555867509'
-    })
+
     // Input Data
-    const [firstName, setFirstName] = useState<String | null>('Omic');
-    const [lastName, setLastName] = useState<String | null>('Rocks');
-    const [phone, setPhone] = useState<String | null>('555867509');
+    const [firstName, setFirstName] = useState<string | null>('Omic');
+    const [lastName, setLastName] = useState<string | null>('Rocks');
+    const [phone, setPhone] = useState<string | null>('555867509');
 
     const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFirstName(e.target.value.trim());
@@ -97,31 +95,34 @@ export const PhoneDetailsForm = (): JSX.Element => {
         setLastName(e.target.value.trim());
         console.log(firstName);   
     }
-    const handlePhoneChange = (e: React.KeyboardEventHandler<HTMLInputElement>) => {
-        setPhone(e.currentTarget.value.trim());
-        console.log(firstName);   
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPhone(e.target.value.trim());
     }
 
     // User Submit Form
     const postUser = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
+        let user: UserDetail = {
+            'firstName': firstName, 'lastName': lastName, 'phone': phone
+        }
+        props.postUser(user);
         console.log(firstName, lastName, phone);
-        
     }
+    
     return (
         <form className={classes.form} onSubmit={postUser}>
             <DialogTitle style={{textAlign: 'start', padding: '0px'}}>Add User</DialogTitle>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='fname' style={{textAlign: 'start', width: '100%'}}>First Name:</FormLabel>
-                <Input type='text' id='fname' className={classes.input} disableUnderline placeholder='Omic' defaultValue={userDetails.firstName} onChange={handleFirstNameChange} />
+                <Input type='text' id='fname' className={classes.input} disableUnderline placeholder='Omic' defaultValue={firstName} onChange={handleFirstNameChange} />
             </div>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='lname' style={{textAlign: 'start', width: '100%'}}>Last Name:</FormLabel>
-                <Input type='text' id='lname' className={classes.input} disableUnderline placeholder='Rocks' defaultValue={lastName} />
+                <Input type='text' id='lname' className={classes.input} disableUnderline placeholder='Rocks' defaultValue={lastName} onChange={handleLastNameChange} />
             </div>
             <div className={classes.input_field}>
                 <FormLabel htmlFor='phone' style={{textAlign: 'start', width: '100%'}}>Phone:</FormLabel>
-                <Input type='text' id='phone' className={classes.input} disableUnderline placeholder='5558675309' defaultValue={phone} onKeyDown={handlePhoneChange} />
+                <Input type='text' id='phone' className={classes.input} disableUnderline placeholder='5558675309' defaultValue={phone} onChange={handlePhoneChange} />
             </div>
             <div className={classes.submit_btn}>
                 <Button color="primary" variant="contained" size='medium' type='submit'>Add User</Button>

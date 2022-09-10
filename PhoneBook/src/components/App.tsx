@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PhoneDetailsForm } from './PhoneDetailsForm';
 import { makeStyles, styled } from '@material-ui/core';
 import { ContactTable } from './ContactTable';
@@ -24,6 +24,7 @@ const Main = styled('main')({
     gap: '40px'
   },
 })
+
 const useStyles = makeStyles({
   container: {
     width: '550px',
@@ -37,14 +38,40 @@ const useStyles = makeStyles({
     }
   }
 })
+
+interface UserDetail {
+  firstName: string | null;
+  lastName: string | null;
+  phone: string | null;
+}
+
+
 function App() {
-  // const [count, setCount] = useState(0);
+  
   const classes = useStyles();
+
+  // Input Data
+  // const [firstName, setFirstName] = useState<string | null>('Omic');
+  // const [lastName, setLastName] = useState<String | null>('Rocks');
+  // const [phone, setPhone] = useState<String | null>('555867509');
+  const [userDetail, setUserDetail] = useState<UserDetail>();
+
+  const postUser = (user: UserDetail): void => {
+    setUserDetail(user);
+  }
+
+  useEffect(() => {
+    console.log(userDetail);
+    
+  }, [userDetail]);
+
   return (
     <Main>
 
       <div className={classes.container}>
-        <PhoneDetailsForm />
+        <PhoneDetailsForm 
+          postUser={postUser}
+        />
       </div>
 
       <div className={classes.container}>

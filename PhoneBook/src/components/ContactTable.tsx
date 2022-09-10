@@ -6,7 +6,7 @@ const Section = styled('section')({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  padding: '8px 10px',
+  padding: '2px 10px',
   gap: '1.6rem',
   transition: 'padding 300ms ease',
 
