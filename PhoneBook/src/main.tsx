@@ -8,8 +8,10 @@ import './index.css'
 
 const Main = styled('main')({
   width: '100%',
-  height: '100%',
-  padding: '0%'
+  overflowY: 'auto',
+  overflowX: 'hidden',
+  display: 'flex',
+  flexDirection: 'column',
 })
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

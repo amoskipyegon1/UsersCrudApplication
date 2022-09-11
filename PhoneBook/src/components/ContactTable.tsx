@@ -61,8 +61,11 @@ interface UserDetail {
   phone: string | null;
 }
 
+interface Props {
+  userDetailList: UserDetail[];
+}
 
-export const ContactTable = (props: {userDetailList: UserDetail[]}) => {
+export const ContactTable = (props: Props) => {
 
   const listSavedUsers = props.userDetailList.map((user, index) => 
     <TableDataRow key={index}>

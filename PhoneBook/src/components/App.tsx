@@ -8,11 +8,12 @@ const Main = styled('main')({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  alignItems: 'start',
   width: '80%',
+  height: '100%',
   padding: '0px 4px',
   gap: '12px',
   transition: 'width 300ms ease',
-  // backgroundColor: '#000',
   ['@media (max-width: 950px)']: {
     flexDirection: 'row',
     width: '100%',

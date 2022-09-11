@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #f3f4f6;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,16 +16,10 @@
 }
 
 body {
-  position: absolute;
-  top: 0%;
-  bottom: 0%;
-  right: 0%;
-  left: 0%;
   margin: 0%;
   padding: 0%;
-  background-color: #f3f4f6;
   color: steelblue;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .body-section {
@@ -35,6 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  background-color: #f3f4f6;
   transition: padding 300ms ease;
 }
 @media (max-width: 640px) {
@@ -50,4 +45,19 @@ input:-webkit-autofill:focus {
 }
 input[data-autocompleted] {
     background-color: transparent !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #9ca3af;
 }
