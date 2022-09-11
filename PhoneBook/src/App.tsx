@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { PhoneDetailsForm } from './PhoneDetailsForm';
+import { PhoneDetailsForm } from './components/PhoneDetailsForm';
 import { makeStyles, styled } from '@material-ui/core';
-import { ContactTable } from './ContactTable';
+import { ContactTable } from './components/ContactTable';
 
 
 const Main = styled('main')({
