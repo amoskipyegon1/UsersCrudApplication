@@ -10,12 +10,6 @@ router = APIRouter(
 )
 
 
-@router.get('/contactlist')
-async def get_contacts():
-    return [
-        {'id': 1, 'firstName': 'Amos', 'lastName': 'Kipyegon', 'phone': '0794818111'}
-    ]
-
 @router.post('/createcontact/', response_model=schemas.PhoneBook)
 def create_user_contact(contact: schemas.PhoneBookCreate, db: Session = Depends(get_db)):
     user_contact = repository.create_phone_contact(db=db, user=contact)
